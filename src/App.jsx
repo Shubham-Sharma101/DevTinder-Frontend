@@ -16,7 +16,7 @@ function App() {
               <Route index element={<Feed />} />
               <Route path="feed" element={<Feed />} />
               <Route path="login" element={<Login />} />
-              <Route path="test" element={<Profile />} />
+              <Route path="profile" element={<Profile />} />
             </Route>
           </Routes>
         </BrowserRouter>
