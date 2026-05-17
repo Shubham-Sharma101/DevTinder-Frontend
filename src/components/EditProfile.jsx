@@ -8,9 +8,9 @@ const EditProfile = ({ user }) => {
   const [userData, setUserData] = useState({
     firstName: user.firstName,
     lastName: user.lastName,
-    age: user.age,
-    about: user.about,
-    gender: user.gender,
+    age: user.age || "",
+    about: user.about || "",
+    gender: user.gender || "",
     photoUrl: user.photoUrl,
   });
   const [error, setError] = useState("");
