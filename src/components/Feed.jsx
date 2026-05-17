@@ -22,11 +22,12 @@ const Feed = () => {
   useEffect(() => {
     getFeed();
   }, []);
+  
   return (
     feed && (
       <div className="flex justify-center my-10">
         {feed.map((i) => {
-          <UserCard user={feed[0]} />;
+         return( <UserCard user={feed[0]} />)
         })}
       </div>
     )

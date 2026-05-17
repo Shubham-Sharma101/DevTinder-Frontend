@@ -23,7 +23,8 @@ const Login = () => {
         { withCredentials: true },
       );
       console.log(res.data);
-      dispatch(addUser(res.data));
+      const profile = res.data?.data ?? res.data;
+      dispatch(addUser(profile));
       return navigate("/");
     } catch (err) {
       setError(err?.response?.data.split(":")[1] || "Something went wrong");

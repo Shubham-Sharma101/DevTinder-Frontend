@@ -34,6 +34,7 @@ const EditProfile = ({ user }) => {
         { ...userData },
         { withCredentials: true },
       );
+      
       dispatch(addUser(res?.data?.data));
       setShowToast(true)
       setTimeout(()=>{

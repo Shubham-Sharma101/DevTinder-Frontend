@@ -28,15 +28,18 @@ const NavBar = () => {
       </div>
       {user && (
         <div className="flex-none flex items-center gap-2">
-          <div className="form-control">Welcome, {user.firstName}</div>
+          <div className="form-control">Welcome, {user.firstName || user.email || "User"}</div>
           <div className="dropdown dropdown-end mx-5 flex">
             <div
               tabIndex={0}
               role="button"
               className="btn btn-ghost btn-circle avatar"
             >
-              <div className="w-10 rounded-full">
-                <img alt="user photo" src={user.photoUrl} />
+              <div className="w-10 rounded-full overflow-hidden">
+                <img
+                  alt="user photo"
+                  src={user.photoUrl || "https://via.placeholder.com/40"}
+                />
               </div>
             </div>
             <ul
@@ -50,10 +53,15 @@ const NavBar = () => {
                 </Link>
               </li>
               <li>
-                <a>Settings</a>
+                <Link to="/connections">Connections</Link>
               </li>
               <li>
-                <Link onClick={handleLogout}>Logout</Link>
+                <Link to="/requests">Connections Requests</Link>
+              </li>
+              <li>
+                <button onClick={handleLogout} className="w-full text-left">
+                  Logout
+                </button>
               </li>
             </ul>
           </div>
