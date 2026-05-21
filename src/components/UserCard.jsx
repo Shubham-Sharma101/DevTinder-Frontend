@@ -2,6 +2,7 @@ import axios from "axios";
 import { BASE_URL } from "../utils/constant";
 import { useDispatch } from "react-redux";
 import { removeUserFromFeed } from "../slices/feedSlice";
+import { useEffect } from "react";
 
 const UserCard = ({ user }) => {
   const { _id, firstName, lastName, photoUrl, age, gender, about } = user;
@@ -19,7 +20,7 @@ const UserCard = ({ user }) => {
       console.error("err:::",err)
     }
   };
-
+useEffect(()=>{},[])
   return (
     <div className="card bg-base-300 w-96 shadow-sm">
       <figure>
