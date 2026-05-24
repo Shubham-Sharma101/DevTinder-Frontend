@@ -1,4 +1,4 @@
-import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Body from "./components/Body";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <Provider store={appStore}>
-        <HashRouter>
+        <BrowserRouter basename="/">
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/" element={<Body />}>
@@ -24,7 +24,7 @@ function App() {
             </Route>
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
-        </HashRouter>
+        </BrowserRouter>
       </Provider>
     </>
   );
