@@ -5,13 +5,14 @@ import { BASE_URL } from "../utils/constant";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../slices/userSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Body = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userData = useSelector((store) => store.user);
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true);
 
   const fetchUser = async () => {
     try {
@@ -25,13 +26,20 @@ const Body = () => {
         navigate("/login");
       }
       console.error(err);
+    } finally {
+      setIsCheckingAuth(false);
     }
   };
+
   useEffect(() => {
     if (!userData) {
       fetchUser();
+    } else {
+      setIsCheckingAuth(false);
     }
   }, []);
+
+  if (isCheckingAuth) return null;
 
   return (
     <div>
