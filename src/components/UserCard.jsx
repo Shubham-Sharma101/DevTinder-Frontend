@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { removeUserFromFeed } from "../slices/feedSlice";
 import { useEffect } from "react";
 
-const UserCard = ({ user }) => {
+const UserCard = ({ user, showActions = true }) => {
   const { _id, firstName, lastName, photoUrl, age, gender, about } = user;
   const dispatch = useDispatch();
 
@@ -30,20 +30,22 @@ useEffect(()=>{},[])
         <h2 className="card-title">{firstName + " " + lastName}</h2>
         {age && gender && <p>{age + " " + gender}</p>}
         <p>{about}</p>
-        <div className="card-actions justify-center my-4">
-          <button
-            onClick={() => handleSendRequest("ignored", _id)}
-            className="btn btn-primary"
-          >
-            Ignore
-          </button>
-          <button
-            onClick={() => handleSendRequest("interested", _id)}
-            className="btn btn-secondary"
-          >
-            Interested
-          </button>
-        </div>
+        {showActions && (
+          <div className="card-actions justify-center my-4">
+            <button
+              onClick={() => handleSendRequest("ignored", _id)}
+              className="btn btn-primary"
+            >
+              Ignore
+            </button>
+            <button
+              onClick={() => handleSendRequest("interested", _id)}
+              className="btn btn-secondary"
+            >
+              Interested
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

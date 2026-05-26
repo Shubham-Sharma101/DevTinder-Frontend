@@ -46,7 +46,7 @@ const EditProfile = ({ user }) => {
   };
   return (
     <>
-      <div className="flex justify-center my-10">
+      <div className="flex justify-center my-10 pb-20">
         <div className="flex justify-center mx-10">
           <div className="card bg-base-300 w-96 shadow-sm">
             <div className="card-body">
@@ -79,7 +79,7 @@ const EditProfile = ({ user }) => {
             </div>
           </div>
         </div>
-        <UserCard user={{ ...userData }} />
+        <UserCard user={{ ...userData }} showActions={false} />
       </div>
       {showToast && <div className="toast toast-top toast-center">
         <div className="alert alert-success">
