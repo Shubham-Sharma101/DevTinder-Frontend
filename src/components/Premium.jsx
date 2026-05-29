@@ -1,4 +1,36 @@
+import axios from "axios";
+import { BASE_URL } from "../utils/constant";
+
 export const Premium = () => {
+  const handleBuyClick = async (type) => {
+    const order = await axios.post(
+      BASE_URL + "/payment/create",
+      {
+        type,
+      },
+      { withCredentials: true },
+    );
+    const { amount, keyId, currency, notes, orderId } = order.data;
+    const options = {
+      key: keyId,
+      amount,
+      currency,
+      name: "Dev Tinder",
+      description: "Connect to other Developer",
+      order_id: orderId,
+      // callback_url: "http://localhost:3000/payment-success",
+      prefill: {
+        name: notes.firstName + " " + notes.lastName,
+        email: notes.email,
+        contact: "9999999999",
+      },
+      theme: {
+        color: "#F37254",
+      },
+    };
+    const rzp = new window.Razorpay(options);
+    rzp.open();
+  };
   return (
     <div className="m-10">
       <div class="flex w-full">
@@ -10,7 +42,12 @@ export const Premium = () => {
             <li> - Blue Tick</li>
             <li> - 3 Months</li>
           </ul>
-          <button className="btn btn-secondary">Buy Silver</button>
+          <button
+            onClick={() => handleBuyClick("silver")}
+            className="btn btn-secondary"
+          >
+            Buy Silver
+          </button>
         </div>
         <div class="$$divider $$divider-horizontal">OR</div>
         <div class="$$card bg-base-300 rounded-box grid h-80 grow place-items-center">
@@ -21,7 +58,12 @@ export const Premium = () => {
             <li> - Blue Tick</li>
             <li> - 6 Months</li>
           </ul>
-          <button className="btn btn-primary">Buy Silver</button>
+          <button
+            onClick={() => handleBuyClick("gold")}
+            className="btn btn-primary"
+          >
+            Buy Gold
+          </button>
         </div>
       </div>
     </div>
