@@ -36,9 +36,9 @@ const EditProfile = ({ user }) => {
       );
       
       dispatch(addUser(res?.data?.data));
-      setShowToast(true)
+      setShowToast(true);
       setTimeout(()=>{
-         setShowToast(false)
+         setShowToast(false);
       },3000)
     } catch (err) {
       setError(err.message);
