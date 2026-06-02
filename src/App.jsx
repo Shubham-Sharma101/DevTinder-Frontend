@@ -5,6 +5,7 @@ import Profile from "./components/Profile";
 import Feed from "./components/Feed";
 import Connections from "./components/Connections";
 import Requests from "./components/Requests";
+import Chat from "./components/Chat"
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import { Premium } from "./components/Premium";
@@ -23,6 +24,7 @@ function App() {
               <Route path="connections" element={<Connections />} />
               <Route path="requests" element={<Requests />} />
               <Route path="premium" element={<Premium />} />
+              <Route path="chat/:targetUserId" element={<Chat />} />
             </Route>
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
