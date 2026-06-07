@@ -72,7 +72,7 @@ export const Premium = () => {
             <h1 className="font-bold text-3xl">Gold Membership</h1>
             <ul>
               <li> - Chat with other people</li>
-              <li> - Infinite connection Requests per day</li>
+              <li> - Infinite Connection Requests Per day</li>
               <li> - Blue Tick</li>
               <li> - 6 Months</li>
             </ul>
